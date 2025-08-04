@@ -3,6 +3,13 @@
 version = 4
 
 [[package]]
+name = "EntityEngine"
+version = "0.1.0"
+dependencies = [
+ "mlua",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -196,13 +203,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5407465600fb0548f1442edf71dd20683c6ed326200ace4b1ef0763521bb3b77"
 dependencies = [
  "bitflags",
-]
-
-[[package]]
-name = "rustTesting"
-version = "0.1.0"
-dependencies = [
- "mlua",
 ]
 
 [[package]]
