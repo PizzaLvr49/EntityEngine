@@ -15,7 +15,7 @@ fn main() -> Result<()> {
 
     let script = r#"
         local sum = 0.0
-        for i = 1, 1000000 do
+        for i = 1, 10_000_000 do
             sum += length_fast(10, 20)
         end
         return sum
@@ -27,10 +27,10 @@ fn main() -> Result<()> {
 
     println!("Result from Luau + Rust: {}", result);
     println!("Total time: {:?}", duration);
-    println!("Time per iteration: {:?}", duration / 1_000_000);
+    println!("Time per iteration: {:?}", duration / 10_000_000);
     println!(
         "Iterations per second: {:.0}",
-        1_000_000.0 / duration.as_secs_f64()
+        10_000_000.0 / duration.as_secs_f64()
     );
 
     Ok(())
