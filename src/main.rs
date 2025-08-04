@@ -9,14 +9,14 @@ fn main() -> Result<()> {
     lua.globals().set("length_fast", length_fast)?;
 
     // Warm up
-    for _ in 0..1000 {
+    for _ in 0..10000 {
         let _: f64 = lua.load("return length_fast(1, 1)").eval()?;
     }
 
     let script = r#"
         local sum = 0.0
-        for i = 1, 100000 do
-            sum = sum + length_fast(10, 20)
+        for i = 1, 1000000 do
+            sum += length_fast(10, 20)
         end
         return sum
     "#;
@@ -27,10 +27,10 @@ fn main() -> Result<()> {
 
     println!("Result from Luau + Rust: {}", result);
     println!("Total time: {:?}", duration);
-    println!("Time per iteration: {:?}", duration / 100_000);
+    println!("Time per iteration: {:?}", duration / 1_000_000);
     println!(
         "Iterations per second: {:.0}",
-        100_000.0 / duration.as_secs_f64()
+        1_000_000.0 / duration.as_secs_f64()
     );
 
     Ok(())
