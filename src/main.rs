@@ -61,3 +61,10 @@ fn main() -> Result<()> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+
+    #[test]
+    fn test_entity_engine() {}
+}
