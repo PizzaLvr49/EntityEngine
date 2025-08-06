@@ -1,5 +1,31 @@
-use mlua::{Lua, Result};
+use mlua::{Error, FromLua, Lua, Result};
 use std::time::Instant;
+struct ReturnValue {
+    result: f64,
+}
+
+impl FromLua for ReturnValue {
+    fn from_lua(value: mlua::Value, _lua: &Lua) -> Result<Self> {
+        match value {
+            mlua::Value::Table(table) => {
+                let result: f64 =
+                    table
+                        .get("result")
+                        .map_err(|e| Error::FromLuaConversionError {
+                            from: "Table",
+                            to: "ReturnValue".to_string(),
+                            message: Some(format!("Failed to get 'result' field: {}", e)),
+                        })?;
+                Ok(ReturnValue { result })
+            }
+            _ => Err(Error::FromLuaConversionError {
+                from: value.type_name(),
+                to: "ReturnValue".to_string(),
+                message: Some("Expected a table with 'result' field".to_string()),
+            }),
+        }
+    }
+}
 
 fn main() -> Result<()> {
     let lua = Lua::new();
@@ -15,17 +41,17 @@ fn main() -> Result<()> {
 
     let script = r#"
         local sum = 0.0
-        for i = 1, 10_000_000 do
-            sum += length_fast(10, 20)
+        for i = 1, 10000000 do
+            sum = sum + length_fast(10, 20)
         end
-        return sum
+        return { result = sum }
     "#;
 
     let start = Instant::now();
-    let result: f64 = lua.load(script).eval()?;
+    let result: ReturnValue = lua.load(script).eval()?;
     let duration = start.elapsed();
 
-    println!("Result from Luau + Rust: {}", result);
+    println!("Result from Luau + Rust: {}", result.result);
     println!("Total time: {:?}", duration);
     println!("Time per iteration: {:?}", duration / 10_000_000);
     println!(
