@@ -1,5 +1,6 @@
 site_name: EntityEngine Docs
 site_description: Documentation for EntityEngine, an entity-component-system framework for game development with luau.
 site_url: https://https://pizzalvr49.github.io/EntityEngine/
+repo_url: https://github.com/PizzaLvr49/EntityEngine
 theme:
   name: material
