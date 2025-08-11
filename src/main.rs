@@ -1,4 +1,4 @@
-use mlua::{Error, FromLua, Lua, Result};
+use mlua::{Error, FromLua, Function, Lua, Result};
 use std::time::Instant;
 struct ReturnValue {
     result: f64,
@@ -30,7 +30,8 @@ impl FromLua for ReturnValue {
 fn main() -> Result<()> {
     let lua = Lua::new();
 
-    let length_fast = lua.create_function(|_, (x, y): (f64, f64)| Ok((x * x + y * y).sqrt()))?;
+    let length_fast: Function =
+        lua.create_function(|_, (x, y): (f64, f64)| Ok((x * x + y * y).sqrt()))?;
 
     lua.globals().set("length_fast", length_fast)?;
 
@@ -39,7 +40,7 @@ fn main() -> Result<()> {
         let _: f64 = lua.load("return length_fast(1, 1)").eval()?;
     }
 
-    let script = r#"
+    let script: &'static str = r#"
         local sum = 0.0
         for i = 1, 10000000 do
             sum = sum + length_fast(10, 20)
