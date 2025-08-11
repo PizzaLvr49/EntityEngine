@@ -1,6 +1,6 @@
 # About
 
-```rust
+``` rust
 fn main() {
     println!("Hello, world!");
 }

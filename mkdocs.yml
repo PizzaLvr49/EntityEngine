@@ -11,8 +11,6 @@ nav:
   - About: about.md
 markdown_extensions:
   - admonition
-  - codehilite:
-      guess_lang: false
+  - codehilite
   - toc:
       permalink: true
-  - pymdownx.highlight
