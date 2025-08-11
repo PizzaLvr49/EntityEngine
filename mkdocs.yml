@@ -6,6 +6,8 @@ repo_name: PizzaLvr49/EntityEngine
 site_author: Your Name
 theme:
   name: material
+  features:
+    - content.code.copy
 nav:
   - Home: index.md
   - About: about.md
