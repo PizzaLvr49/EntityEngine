@@ -8,6 +8,13 @@ theme:
   name: material
   features:
     - content.code.copy
+  features:
+    - content.code.select
+  features:
+    - content.code.annotate
+extra:
+  annotate:
+    json: [.s2]
 nav:
   - Home: index.md
   - About: about.md
