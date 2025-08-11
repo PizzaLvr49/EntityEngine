@@ -1,6 +1,6 @@
-# Welcome to MkDocs
+# Entity Engine
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Entity Engine is a powerful game engine written in rust.
 
 ## Commands
 

@@ -3,8 +3,14 @@ site_description: Documentation for EntityEngine, an entity-component-system fra
 site_url: https://pizzalvr49.github.io/EntityEngine/
 repo_url: https://github.com/PizzaLvr49/EntityEngine
 repo_name: PizzaLvr49/EntityEngine
+site_author: Your Name
 theme:
   name: material
 nav:
   - Home: index.md
   - About: about.md
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
