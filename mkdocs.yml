@@ -11,6 +11,6 @@ nav:
   - About: about.md
 markdown_extensions:
   - admonition
-  - codehilite
+  - codehilite(linenums=true)
   - toc:
       permalink: true
