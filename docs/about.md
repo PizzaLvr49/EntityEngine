@@ -1,7 +1,7 @@
 # About
 
-``` rust
-fn main() {
-    println!("Hello, world!");
+``` lua
+function main() {
+    print("Hello, world!");
 }
 ```
