@@ -1,6 +1,6 @@
 # About
 
-```rust
+```rs
 fn main() {
     println!("Hello, world!");
 }
